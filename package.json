@@ -1,0 +1,19 @@
+{
+  "name": "serverless-framework",
+  "version": "1.0.0",
+  "description": "### Commands",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/waltermanias/serverless-framework.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/waltermanias/serverless-framework/issues"
+  },
+  "homepage": "https://github.com/waltermanias/serverless-framework#readme"
+}
