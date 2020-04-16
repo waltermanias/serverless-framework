@@ -43,3 +43,8 @@ Invoke the function locally from the terminal.
 Send data through the event
 `sls invoke local -f hello -s dev -d '{"message": "Hello"}'`
 
+## Emulate API Gateway
+
+https://github.com/waltermanias/serverless-framework/blob/master/README.md
+
+`npm install --save serverless-offiline`
