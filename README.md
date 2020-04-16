@@ -34,3 +34,6 @@ Invoke the function locally from the terminal.
 
 `sls invoke local -f hello -s dev`
 
+Send data through the event
+`sls invoke local -f hello -s dev -d '{"message": "Hello"}'`
+
