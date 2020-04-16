@@ -24,4 +24,13 @@ The next command will create your boilerplate base on the aws template with Node
 
 `sls deploy`
 
+## Useful commands
+
+Invoke the function from the terminal.
+
+`sls invoke -f hello -s dev`
+
+Invoke the function locally from the terminal.
+
+`sls invoke local -f hello -s dev`
 
