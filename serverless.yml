@@ -16,6 +16,9 @@ service: curso-sls-hello-world
 #app: your-app-name
 #org: your-org-name
 
+plugins:
+  - serverless-offline
+
 # You can pin your service to only deploy with a specific Serverless version
 # Check out our docs for more details
 # frameworkVersion: "=X.X.X"
@@ -65,8 +68,15 @@ functions:
 #    Check the event documentation for details
     events:
       - http:
-          path: first-resource/hello
+          path: users/{id}
           method: get
+
+  save:
+    handler: handler.save
+    events:
+      - http:
+          path: users
+          method: post
 #      - websocket: $connect
 #      - s3: ${env:BUCKET}
 #      - schedule: rate(10 minutes)

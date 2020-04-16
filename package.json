@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/waltermanias/serverless-framework#readme",
   "dependencies": {
+    "querystring": "^0.2.0",
     "serverless-offline": "^6.1.4"
   }
 }

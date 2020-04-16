@@ -48,3 +48,19 @@ Send data through the event
 https://github.com/waltermanias/serverless-framework/blob/master/README.md
 
 `npm install --save serverless-offiline`
+
+Run the server
+
+`sls offline`
+
+## Update your NodeJS version
+
+Use n module from npm in order to upgrade node
+
+`sudo npm cache clean -f`
+`sudo npm install -g n`
+`sudo n stable`
+
+To upgrade to latest version (and not current stable) version, you can use
+
+`sudo n latest`
