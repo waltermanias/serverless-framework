@@ -22,7 +22,13 @@ The next command will create your boilerplate base on the aws template with Node
 
 ## Deploy
 
+Deploy all functions
+
 `sls deploy`
+
+Deploy one function
+
+`sls deploy -f hello -s dev`
 
 ## Useful commands
 
