@@ -18,6 +18,12 @@ service: curso-sls-hello-world
 
 plugins:
   - serverless-offline
+  - serverless-plugin-include-dependencies
+
+package:
+  exclude:
+    - node_modules/**
+
 
 # You can pin your service to only deploy with a specific Serverless version
 # Check out our docs for more details
