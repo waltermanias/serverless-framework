@@ -70,3 +70,8 @@ Use n module from npm in order to upgrade node
 To upgrade to latest version (and not current stable) version, you can use
 
 `sudo n latest`
+
+
+## Optimize dependencies
+
+`npm install serverless-plugin-include-dependencies --save-dev`
