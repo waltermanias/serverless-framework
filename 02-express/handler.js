@@ -7,18 +7,25 @@ const AWS = require('aws-sdk');
 const bodyParser = require('body-parser');
 const IS_OFFLINE = process.env.IS_OFFLINE;
 const USERS_TABLE = process.env.USERS_TABLE;
-let dynamoDB;
 
-// sls dynamodb install
+let options = {}
 
 if(IS_OFFLINE) {
-  dynamoDB = new AWS.DynamoDB.DocumentClient({region: "us-east-1", endpoint:"http://localhost:8000"})
-} else {
-  dynamoDB = new AWS.DynamoDB.DocumentClient();
+  options.region = "localhost"
+  options.endpoint = "http://localhost:8000"
 }
+// sls dynamodb install
 
+const dynamoDB=new AWS.DynamoDB.DocumentClient(options);
 
 app.use(bodyParser.urlencoded({extended: true}));
+
+
+app.get('/', (req, res) => {
+  //res.send('Hello World from Express');
+  res.status(200).json({ IS_OFFLINE })
+});
+
 
 app.post('/users', (req, res) =>{
   const { userId, name  } = req.body;
@@ -53,7 +60,7 @@ app.get('/users', (req, res) => {
     if(error) {
       console.log(error)
       return res.status(500).json({
-        error: "The user cannot be saved"
+        error: "The users cannot be retrieved"
       })
     } else {
       res.status(200).json({ success: true, users: result.Items  });
@@ -89,9 +96,7 @@ app.get('/users/:id', (req,res) => {
 
 });
 
-app.get('/', (req, res) => {
-  res.send('Hello World from Express');
-});
+
 
 module.exports.generic = serverless(app);
 

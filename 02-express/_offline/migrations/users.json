@@ -1,0 +1,13 @@
+{
+    "Table": {
+        "TableName": "users-table-dev",
+        "KeySchema": [
+            {
+                "AttributeName": "userId",
+                "KeyType": "HASH"
+            }
+            
+        ]
+    }
+
+}
