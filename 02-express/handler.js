@@ -5,9 +5,18 @@ const express = require('express');
 const app = express();
 const AWS = require('aws-sdk');
 const bodyParser = require('body-parser');
-
-const dynamoDB = new AWS.DynamoDB.DocumentClient();
+const IS_OFFLINE = process.env.IS_OFFLINE;
 const USERS_TABLE = process.env.USERS_TABLE;
+let dynamoDB;
+
+// sls dynamodb install
+
+if(IS_OFFLINE) {
+  dynamoDB = new AWS.DynamoDB.DocumentClient({region: "us-east-1", endpoint:"http://localhost:8000"})
+} else {
+  dynamoDB = new AWS.DynamoDB.DocumentClient();
+}
+
 
 app.use(bodyParser.urlencoded({extended: true}));
 

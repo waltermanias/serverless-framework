@@ -22,7 +22,15 @@ service: curso-sls-express
 
 custom:
   tableName: 'users-table-${self:provider.stage}'
+  dynamodb:
+    start:
+      migrate: true
+    stages:
+      - dev
 
+plugins:
+  - serverless-dynamodb-local
+  - serverless-offline
 
 provider:
   name: aws
@@ -42,6 +50,7 @@ provider:
         - dynamodb:DeleteItem
       Resource:
         - { "Fn::GetAtt": ["UsersDynamoDBTable", "Arn"] }
+  # you can define service wide environment variables here
   environment:
     USERS_TABLE: ${self:custom.tableName}
 
@@ -61,10 +70,6 @@ provider:
 #          - - "arn:aws:s3:::"
 #            - "Ref" : "ServerlessDeploymentBucket"
 #            - "/*"
-
-# you can define service wide environment variables here
-#  environment:
-#    variable1: value1
 
 # you can add packaging information here
 #package:
