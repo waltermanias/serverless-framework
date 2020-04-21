@@ -51,7 +51,34 @@ app.get('/users', (req, res) => {
     }
   })
 
-})
+});
+
+
+app.get('/users/:id', (req,res) => {
+  const params = {
+    TableName: USERS_TABLE,
+    Key: {
+      userId: req.params.id
+    }
+  }
+
+  dynamoDB.get(params, (error, result) => {
+    if(error) {
+      console.log(error)
+      return res.status(500).json({
+        error: "The user cannot be retrieved"
+      })
+    } else {
+      if(result.Item) {
+        res.status(200).json({ success: true, user: result.Item  });
+      } else {
+        res.status(404).json({ success: false, message: 'The user was not found.'  });
+      }
+      
+    }
+  })
+
+});
 
 app.get('/', (req, res) => {
   res.send('Hello World from Express');
